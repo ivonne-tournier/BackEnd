@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const dbConection = async () =>{
+const dbConnection = async () =>{
     try{
-        await mongoose.conect(process.env.MONGO_CNN,{
+        mongoose.connect(process.env.MONGO_CNN, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
@@ -12,4 +12,4 @@ const dbConection = async () =>{
         console.log("error en inicio de base de datos")
     }
 }
-module.exports= {dbConection}
+module.exports= {dbConnection}
