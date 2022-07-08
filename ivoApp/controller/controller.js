@@ -11,5 +11,5 @@ const controller ={
     }
 
 }
-
+const {Clothing}= require("../model/ropa")
 module.exports= controller
