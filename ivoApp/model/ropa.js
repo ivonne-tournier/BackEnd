@@ -21,6 +21,6 @@ const storeSchema = new Schema({
         required: true,
     }
 });
-const Clothing= mongoose.model('Clothing',storeSchema);
+const Ropa= mongoose.model('Ropa',storeSchema);
 
-module.exports={Clothing}
+module.exports={Ropa}
