@@ -9,7 +9,8 @@ const dbConnection = async () =>{
         })
         console.log("base de datos conectada");
     } catch {
-        console.log("error en inicio de base de datos")
+        console.log("error en inicio de base de datos");
+        throw new Error("error a la hora de iniciar la base de datos ")
     }
 }
 module.exports= {dbConnection}
