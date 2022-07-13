@@ -1,7 +1,7 @@
-const{Ropa}=require('../model/Ropa');
+const { validationResult } = require("express-validator");
+const res = require("express/lib/response");
 const{Silla}=require('../model/Silla');
-const{Mesa}=require('../model/Mesa');
-const{Zapato}=require('../model/Zapato');
+
 
 const index = (req, res) =>{
     res.render("index", {title: "express"});
@@ -16,12 +16,22 @@ const controller ={
     }
 
 }
-const verRopa= async (req,res) =>{
-    const Ropa = await Ropa.find()
-        res.json({Ropa})
+const verSilla= async (req,res) =>{
+    const Silla = await Silla.find()
+        res.json({Silla})
 }
 
-const crearSillas = async (req,res)=>{
+const verUnaSilla = async (req,res)=>{
+    try{
+        const Silla = await Silla.findById(req.params.id)
+        res.json(Silla)
+    }
+    catch (err){
+        res.status(400).json({msg: 'error con el id', err})
+    }
+}
+
+const crearSilla = async (req,res)=>{
     try{
         const save = new Silla (req.body);
         await save.save()
@@ -31,5 +41,24 @@ const crearSillas = async (req,res)=>{
         res.status(501).json({msg: 'no se puede guardar la silla porfavor intenta mas tarde', err})
     }
 }
+const actualizarSilla= async (req,res) =>{
+    const error = validationResult(req)
+    if (error.isEmpty()){
+        const {id}=req.params
+    const update= await Silla.findByIdAndUpdate(id, req.body)
+    res.status(202).json({modelo: req.body.modelo, update})
+    } else { 
+        res.status(501).json(error)
+    }
+    
+}
+const borrarSilla= async (req,res)=>{
+    try { 
+        const Silla= await Silla.findByIdAndDelete(req.params.id)
+        res.json({msg: "se ha eliminado una silla", Silla})
+    }catch (err){
+        res.status(400).json({msg: "problemas al borrar la silla"})
+    }
+}
 
-module.exports={verRopa,crearSillas}
+module.exports={verSilla, crearSilla, verUnaSilla, actualizarSilla, borrarSilla }
