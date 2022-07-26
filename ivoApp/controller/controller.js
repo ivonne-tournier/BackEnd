@@ -17,14 +17,14 @@ const controller ={
 
 }
 const verSilla= async (req,res) =>{
-    const Silla = await Silla.find()
-        res.json({Silla})
+    const sillas = await Silla.find()
+        res.json({sillas})
 }
 
 const verUnaSilla = async (req,res)=>{
     try{
-        const Silla = await Silla.findById(req.params.id)
-        res.json(Silla)
+        const silla = await Silla.findById(req.params.id);
+        res.json({silla})
     }
     catch (err){
         res.status(400).json({msg: 'error con el id', err})
@@ -50,14 +50,14 @@ const actualizarSilla= async (req,res) =>{
     } else { 
         res.status(501).json(error)
     }
-    
+
 }
 const borrarSilla= async (req,res)=>{
     try { 
-        const Silla= await Silla.findByIdAndDelete(req.params.id)
+        const silla= await Silla.findByIdAndDelete(req.params.id)
         res.json({msg: "se ha eliminado una silla", Silla})
     }catch (err){
-        res.status(400).json({msg: "problemas al borrar la silla"})
+        res.status(400).json({msg: "hay problemas al borrar la silla"})
     }
 }
 
