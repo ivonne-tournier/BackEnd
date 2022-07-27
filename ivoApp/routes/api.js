@@ -13,7 +13,7 @@ router.post('/crear',[
     check("tela").not().isEmpty().withMessage("el campo esta vacio").isLength({max:20, min:1}).withMessage("maximo 20 caracteres y minimo 1")
 ], crearSilla);
 
-router.put ('/actualizar/',[
+router.put ('/actualizar/:id',[
     check("modelo").not().isEmpty().withMessage("el campo esta vacio").isLength({max:20, min:1}).withMessage("maximo 20 caracteres y minimo 1"),
     check("marca").not().isEmpty().withMessage("el campo esta vacio").isLength({max:20, min:1}).withMessage("maximo 20 caracteres y minimo 1"),
     check("material").not().isEmpty().withMessage("el campo esta vacio").isLength({max:20, min:1}).withMessage("maximo 20 caracteres y minimo 1"),
