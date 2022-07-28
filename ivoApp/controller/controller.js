@@ -62,8 +62,8 @@ const borrarSilla= async (req,res)=>{
 }
 
 const verApiExterna = async(req,res)=>{
-    const resultado = await axios.get("https://jsonplaceholder.typicode.com/users",{timeout:1000}).catch((err)=>{
-        err.origin = 'Error getting URL';
+    const resultado = await axios.get("https://jsonplaceholder.typicode.com/users/",{timeout:1000}).catch((err)=>{
+        err.origin = 'Error con la URL';
         throw err;
     });
     res.status(200).json(resultado.data)
