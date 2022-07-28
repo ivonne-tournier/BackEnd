@@ -61,4 +61,11 @@ const borrarSilla= async (req,res)=>{
     }
 }
 
-module.exports={verSilla, crearSilla, verUnaSilla, actualizarSilla, borrarSilla }
+const verApiExterna = async(req,res)=>{
+    const resultado = await axios.get("https://jsonplaceholder.typicode.com/users",{timeout:1000}).catch((err)=>{
+        err.origin = 'Error getting URL';
+        throw err;
+    });
+    res.status(200).json(resultado.data)
+}
+module.exports={verSilla, crearSilla, verUnaSilla, actualizarSilla, borrarSilla, verApiExterna }
