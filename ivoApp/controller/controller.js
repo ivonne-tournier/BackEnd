@@ -69,4 +69,4 @@ const verApiExterna = async(req,res)=>{
     });
     res.status(200).json(resultado.data)
 }
-module.exports={verSilla, crearSilla, verUnaSilla, actualizarSilla, borrarSilla, verApiExterna }
+module.exports={controller, index, verSilla, crearSilla, verUnaSilla, actualizarSilla, borrarSilla, verApiExterna }
