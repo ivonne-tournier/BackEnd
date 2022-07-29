@@ -6,6 +6,7 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const apiRouter= require('./routes/api');
+const apiExternaRouter = require("./routes/apiExterna")
 const { dbConnection } = require('./db/db');
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api', apiRouter);
+app.use("/apiExterna", apiExternaRouter)
 dbConnection();
 
 module.exports = app;
