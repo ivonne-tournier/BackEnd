@@ -1,7 +1,7 @@
 const { validationResult } = require("express-validator");
 const res = require("express/lib/response");
 const{Silla}=require('../model/Silla');
-
+const  {  default : axios  }  =  require ( "axios" ) ;
 
 const index = (req, res) =>{
     res.render("index", {title: "express"});
